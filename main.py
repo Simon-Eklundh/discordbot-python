@@ -55,4 +55,5 @@ async def on_ready():
 
 if __name__ == "__main__":
     database.prepare()
-    bot.run("ODU2MTczNTUxMTkxMDY0NTk3.GST-RV.bsiZmJgs6yQPT-ZqxCpGFYBf7-oH5DxbVl9L_c")
+    token = os.environ.get("BOT_TOKEN")
+    bot.run(token)
