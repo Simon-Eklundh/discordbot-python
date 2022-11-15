@@ -7,7 +7,7 @@ import psycopg2
 @dataclass
 class PostgreSQL_Data:
     database_name: str = "discordbot"
-    host: str = "localhost"
+    host: str = "postgres"
     user: str = "postgres"
     password: str = "postgrespw"
     port: int = 5432
