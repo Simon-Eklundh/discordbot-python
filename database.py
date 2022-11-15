@@ -3,21 +3,11 @@ from dataclasses import dataclass
 
 import psycopg2
 
-
-@dataclass
-class PostgreSQL_Data:
-    database_name: str = "discordbot"
-    host: str = "postgres"
-    user: str = "postgres"
-    password: str = "postgrespw"
-    port: int = 5432
-
-
 conn = psycopg2.connect(database="discordbot",
-                        host="localhost",
+                        host="postgres",
                         user="postgres",
                         password="postgrespw",
-                        port=49153)
+                        port=5432)
 cursor = conn.cursor()
 
 
