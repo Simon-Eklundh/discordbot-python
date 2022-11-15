@@ -10,7 +10,7 @@ class PostgreSQL_Data:
     host: str = "localhost"
     user: str = "postgres"
     password: str = "postgrespw"
-    port: int = 49153
+    port: int = 5432
 
 
 conn = psycopg2.connect(database="discordbot",
