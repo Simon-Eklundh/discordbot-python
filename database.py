@@ -22,25 +22,6 @@ cursor = conn.cursor()
 
 
 def prepare():
-    global conn
-    global cursor
-    data = PostgreSQL_Data
-    data.database_name = os.environ.get("DATABASE_NAME", data.database_name)
-    data.host = os.environ.get("DATABASE_HOST", data.host)
-    data.user = os.environ.get("DATABASE_user", data.user)
-    data.password = os.environ.get("DATABASE_PASSWORD", data.password)
-    data.port = int(os.environ.get("DATABASE_PORT", data.port))
-
-    conn = psycopg2.connect(database=data.database_name,
-                            host=data.host,
-                            user=data.user,
-                            password=data.password,
-                            port=data.port)
-    cursor = conn.cursor()
-    # TMP
-    cursor.execute("DROP TABLE helpchannels")
-    cursor.execute("DROP TABLE helpcategories")
-
     cursor.execute(
         "CREATE TABLE IF NOT EXISTS helpchannels (person BIGINT NOT NULL PRIMARY KEY, server BIGINT NOT NULL, channel BIGINT NOT NULL)")
     cursor.execute(
