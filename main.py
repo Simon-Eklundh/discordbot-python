@@ -1,12 +1,10 @@
 import os
-from enum import Enum
 
 import disnake
 from disnake import ChannelType
 from disnake.ext import commands
 
 import database
-
 import slash_commands
 from Links import Link
 
