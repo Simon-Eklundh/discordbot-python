@@ -8,7 +8,7 @@ import database
 import slash_commands
 from Links import Link
 
-bot = commands.InteractionBot(test_guilds=[962642268248997908], )
+bot = commands.InteractionBot()
 
 
 @bot.slash_command()
@@ -53,5 +53,5 @@ async def on_ready():
 
 if __name__ == "__main__":
     database.prepare()
-    token = os.environ.get("BOT_TOKEN")
+    token: str = os.environ.get("BOT_TOKEN")
     bot.run(token)
