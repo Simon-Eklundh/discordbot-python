@@ -4,8 +4,8 @@ import psycopg2
 
 conn = psycopg2.connect(database="discordbot",
                         host="postgres",
-                        user="postgres",
-                        password="postgrespw",
+                        user="discordbot",
+                        password="discordbotpw",
                         port=5432)
 cursor = conn.cursor()
 
