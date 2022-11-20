@@ -3,7 +3,7 @@
 import mysql.connector
 
 mydb = mysql.connector.connect(
-  host="mysql-discordbot",
+  host="mysql",
   user="discordbot",
   password="discordbotpw",
   database="discordbot"
