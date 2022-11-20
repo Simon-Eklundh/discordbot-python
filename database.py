@@ -1,13 +1,15 @@
 
 
-import psycopg2
+import mysql.connector
 
-conn = psycopg2.connect(database="discordbot",
-                        host="postgres",
-                        user="discordbot",
-                        password="discordbotpw",
-                        port=5432)
-cursor = conn.cursor()
+mydb = mysql.connector.connect(
+  host="mysql-discordbot",
+  user="discordbot",
+  password="discordbotpw",
+  database="discordbot"
+)
+cursor = mydb.cursor()
+
 
 
 def prepare():
@@ -15,7 +17,7 @@ def prepare():
         "CREATE TABLE IF NOT EXISTS helpchannels (person BIGINT NOT NULL PRIMARY KEY, server BIGINT NOT NULL, channel BIGINT NOT NULL)")
     cursor.execute(
         "CREATE TABLE IF NOT EXISTS helpcategories (server BIGINT NOT NULL PRIMARY KEY, category BIGINT NOT NULL)")
-    conn.commit()
+    mydb.commit()
 
 
 
@@ -30,7 +32,7 @@ def set_help_category(guild_id, category_id):
 def get_help_channel(user_id, guild_id):
     help_statement = f"SELECT channel FROM helpchannels WHERE person={user_id} AND server={guild_id}"
     channel = execute_statement_with_fetch(help_statement)
-    if channel == None:
+    if channel is None:
         return -1
     else:
         return channel[0]
@@ -40,13 +42,13 @@ def get_help_channel(user_id, guild_id):
 def execute_statement(help_statement):
     global cursor
     cursor.execute(help_statement)
-    conn.commit()
+    mydb.commit()
 
 def execute_statement_with_fetch(help_statement):
     global cursor
     cursor.execute(help_statement)
     channel = cursor.fetchone()
-    conn.commit()
+    mydb.commit()
     return channel
 
 
